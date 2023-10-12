@@ -1,0 +1,13 @@
+eureka:
+  instance:
+    hostname: ${HOSTNAME:localhost}
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+    enabled: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+spring:
+  application:
+    name: api-wilayah
