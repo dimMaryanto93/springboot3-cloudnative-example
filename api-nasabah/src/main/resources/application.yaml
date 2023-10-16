@@ -13,18 +13,6 @@ spring:
   application:
     name: api-nasabah
 
-tracing:
-  url: http://${JAEGER_TELEMETRY_HOST:localhost}:${JAEGER_TELEMETRY_PORT:4318}/v1/traces
-
-management:
-  tracing:
-    sampling:
-      probability: 1.0
-
-logging:
-  pattern:
-    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
-
 server:
   port: ${APPLICATION_PORT:9092}
 
@@ -32,12 +20,16 @@ clients:
   wilayah-service:
     url: http://${SERVICE_WILAYAH_HOST:localhost}:${SERVICE_WILAYAH_PORT:9091}
 
-otel:
-  exporter:
-    jaeger:
-      enabled: true
-    otlp:
-      enabled: true
-      endpoint: http://${OLTP_HOST:localhost}:${OLTP_PORT:4317}
-  propagation:
-    type: tracecontext,baggage
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://${ZIPKIN_HOST:localhost}:${ZIPKIN_PORT:9411}/api/v2/spans
+  otlp:
+    tracing:
+      endpoint: http://${OLTP_HOST:localhost}:${OLTP_PORT:4318}/v1/metrics
+  wavefront:
+    application:
+      service-name: ${spring.application.name}
