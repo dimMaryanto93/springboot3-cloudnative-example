@@ -20,3 +20,14 @@ services:
       - "9091:8080"
     env_file:
       - springboot.env
+  api-nasabah:
+    image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-nasabah-v1
+    build:
+      dockerfile: Dockerfile
+      context: ./api-nasabah
+      args:
+        JAR_FILE: api-nasabah-1.0.0-release.jar
+    ports:
+      - "9092:8080"
+    env_file:
+      - springboot.env

@@ -1,9 +1,7 @@
-GET localhost:8080/api/kota/list
-Content-Type: application/json
-
 ### GET list kota
-
-GET localhost:8080/api/kota/findById/02
+GET localhost:9091/api/kota/list
 Content-Type: application/json
 
 ### Get find by id
+GET localhost:9091/api/kota/findById/02
+Content-Type: application/json

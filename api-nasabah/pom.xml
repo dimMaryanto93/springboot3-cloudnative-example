@@ -7,10 +7,10 @@
         <version>1.0.0-release</version>
     </parent>
 
-    <artifactId>api-wilayah</artifactId>
+    <artifactId>api-nasabah</artifactId>
     <packaging>jar</packaging>
-    <name>api-wilayah</name>
 
+    <name>api-nasabah</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -47,4 +47,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

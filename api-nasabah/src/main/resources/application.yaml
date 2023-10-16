@@ -8,9 +8,10 @@ eureka:
     fetch-registry: true
     healthcheck:
       enabled: true
+
 spring:
   application:
-    name: api-wilayah
+    name: api-nasabah
 
 tracing:
   url: http://${JAEGER_TELEMETRY_HOST:localhost}:${JAEGER_TELEMETRY_PORT:4318}/v1/traces
@@ -25,4 +26,8 @@ logging:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
 
 server:
-  port: ${APPLICATION_PORT:9091}
+  port: ${APPLICATION_PORT:8081}
+
+clients:
+  wilayah-service:
+    url: http://${SERVICE_WILAYAH_HOST:localhost}:${SERVICE_WILAYAH_PORT:9092}
