@@ -3,7 +3,51 @@ services:
   jaeger-service:
     image: jaegertracing/all-in-one:latest
     ports:
-      - "4318:4318"
       - "16686:16686"
     environment:
       - COLLECTOR_OTLP_ENABLED=true
+
+  zipkin:
+    image: openzipkin/zipkin-slim:latest
+    ports:
+      - "9412:9411"
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.74.0
+    command: [ "--config=/etc/otel-collector-config.yaml" ]
+    volumes:
+      - ./docker-compose/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "55680:55680"
+      - "9411:9411"
+      - "9464:9464"
+      - "8888:8888"
+    depends_on:
+      - jaeger-service
+      - zipkin
+
+  prometheus:
+    image: prom/prometheus:v2.43.0
+    command:
+      - --web.console.templates=/etc/prometheus/consoles
+      - --web.console.libraries=/etc/prometheus/console_libraries
+      - --storage.tsdb.retention.time=1h
+      - --config.file=/etc/prometheus/prometheus-config.yaml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+      - --web.route-prefix=/
+      - --enable-feature=exemplar-storage
+    volumes:
+      - ./docker-compose/prometheus/prometheus-config.yaml:/etc/prometheus/prometheus-config.yaml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:9.2.15
+    volumes:
+      - ./docker-compose/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./docker-compose/grafana/provisioning/:/etc/grafana/provisioning/
+    ports:
+      - "3000:3000"

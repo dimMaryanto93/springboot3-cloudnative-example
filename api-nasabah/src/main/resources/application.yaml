@@ -26,8 +26,18 @@ logging:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
 
 server:
-  port: ${APPLICATION_PORT:8081}
+  port: ${APPLICATION_PORT:9092}
 
 clients:
   wilayah-service:
-    url: http://${SERVICE_WILAYAH_HOST:localhost}:${SERVICE_WILAYAH_PORT:9092}
+    url: http://${SERVICE_WILAYAH_HOST:localhost}:${SERVICE_WILAYAH_PORT:9091}
+
+otel:
+  exporter:
+    jaeger:
+      enabled: true
+    otlp:
+      enabled: true
+      endpoint: http://${OLTP_HOST:localhost}:${OLTP_PORT:4317}
+  propagation:
+    type: tracecontext,baggage
