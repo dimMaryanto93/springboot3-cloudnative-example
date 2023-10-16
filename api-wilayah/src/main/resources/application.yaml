@@ -4,7 +4,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
-    enabled: true
+    enabled: ${EUREKA_ENABLE:false}
     fetch-registry: true
     healthcheck:
       enabled: true

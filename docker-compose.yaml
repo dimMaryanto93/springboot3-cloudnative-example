@@ -1,22 +1,17 @@
 version: '3.9'
 services:
-  eureka-server:
-    image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:eureka-v1
-    build:
-      dockerfile: Dockerfile
-      context: ./eureka-server
-      args:
-        JAR_FILE: eureka-server-1.0.0-release.jar
+  jaeger-service:
+    image: jaegertracing/all-in-one:latest
     ports:
-      - "8761:8761"
-  api-wilayah:
-    image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-wilayah-v1
-    build:
-      dockerfile: Dockerfile
-      context: ./api-wilayah
-      args:
-        JAR_FILE: api-wilayah-1.0.0-release.jar
+      - "16686:16686"
+      - "14250"
+
+  collector:
+    image: otel/opentelemetry-collector:0.72.0
+    command: [ "--config=/etc/otel-collector-config.yml" ]
+    volumes:
+      - ./opentelemetry/otel-config.yml:/etc/otel-collector-config.yml
     ports:
-      - "9091:8080"
-    env_file:
-      - springboot.env
+      - "4317:4317"
+    depends_on:
+      - jaeger-service
