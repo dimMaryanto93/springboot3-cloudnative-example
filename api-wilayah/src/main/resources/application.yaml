@@ -28,5 +28,24 @@ management:
     application:
       service-name: ${spring.application.name}
 
+  health:
+    diskspace:
+      enabled: true
+    db:
+      enabled: true
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      show-components: always
+
+  endpoints:
+    web:
+      exposure:
+        include: "resume,pause,restart,refresh,metrics,threaddump,heapdump,info,health,health-path"
+
+
 server:
   port: ${APPLICATION_PORT:9091}

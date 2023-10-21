@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opentelementry-property
+data:
+  JAEGER_TELEMETRY_HOST: "jaeger-service"
+  JAEGER_TELEMETRY_PORT: "4318"
