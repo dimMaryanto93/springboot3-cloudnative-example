@@ -1,0 +1,50 @@
+eureka:
+  instance:
+    hostname: ${HOSTNAME:localhost}
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+    enabled: ${EUREKA_ENABLE:false}
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+
+spring:
+  application:
+    name: api-uploader
+  mvc:
+    dispatch-options-request: true
+    dispatch-trace-request: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${SERVER_MULTIPART_MAX_FILE_SIZE:100MB}
+      max-request-size: ${SERVER_MULTIPART_MAX_REQUEST_SIZE:200MB}
+      resolve-lazily: true
+
+server:
+  port: ${APPLICATION_PORT:9093}
+
+clients:
+  wilayah-service:
+    url: http://${SERVICE_WILAYAH_HOST:localhost}:${SERVICE_WILAYAH_PORT:9091}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://${ZIPKIN_HOST:localhost}:${ZIPKIN_PORT:9411}/api/v2/spans
+  otlp:
+    tracing:
+      endpoint: http://${OLTP_HOST:localhost}:${OLTP_PORT:4318}/v1/metrics
+  wavefront:
+    application:
+      service-name: ${spring.application.name}
+
+storage:
+  files:
+    location:
+      upload: ${STORAGE_UPLOAD_FILE_LOCATION:./target/uploads}
+      download: ${STORAGE_DOWNLOAD_FILE_LOCATION:./target/download}

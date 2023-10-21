@@ -17,6 +17,7 @@
 		<module>route-gateway</module>
 		<module>api-wilayah</module>
 		<module>api-nasabah</module>
+		<module>api-uploader</module>
 	</modules>
 	<packaging>pom</packaging>
 	<description>Demo project for Spring Boot</description>
