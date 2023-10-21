@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-nasabah
+  labels:
+    app: api-nasabah
+    tier: devel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-nasabah
+      tier: devel
+  template:
+    metadata:
+      name: api-nasabah
+      labels:
+        app: api-nasabah
+        tier: devel
+    spec:
+      containers:
+        - name: api-nasabah
+          image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-nasabah-v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          startupProbe:
+            initialDelaySeconds: 2
+            httpGet:
+              port: http
+              path: /actuator/health/readinessState
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /actuator/health/livenessState
+          envFrom:
+            - configMapRef:
+                name: springboot-property
+            - configMapRef:
+                name: eureka-property
+            - configMapRef:
+                name: opentelementry-property
+          resources:
+            requests:
+              cpu: 200m
+              memory: 200Mi
+            limits:
+              cpu: 2000m
+              memory: 1Gi
+      restartPolicy: Always
