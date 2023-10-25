@@ -1,4 +1,6 @@
 version: '3.9'
+volumes:
+  minio_data: { }
 services:
   jaeger-service:
     image: jaegertracing/all-in-one:latest
@@ -51,3 +53,16 @@ services:
       - ./docker-compose/grafana/provisioning/:/etc/grafana/provisioning/
     ports:
       - "3000:3000"
+
+  minio:
+    image: quay.io/minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_VOLUMES: /data
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: [ "server", "/data", "--console-address", ":9001" ]
+    volumes:
+      - minio_data:/data

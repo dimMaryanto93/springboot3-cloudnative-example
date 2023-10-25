@@ -55,10 +55,10 @@ minio:
     port: ${MINIO_PORT:9000}
     secure: false
   region:
-    name:
+    name: us-east-1
     enabled: false
   credential:
-    access_key: ${MINIO_ACCESS_KEY:test}
-    secret_key: ${MINIO_SECRET_KEY:test_secret_key}
+    access_key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret_key: ${MINIO_SECRET_KEY:minioadmin}
   bucket:
-    name: ${MINIO_BUCKET_NAME:local}
+    name: ${MINIO_BUCKET_NAME:minioadmin}

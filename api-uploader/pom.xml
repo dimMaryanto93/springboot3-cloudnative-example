@@ -10,7 +10,7 @@
     <artifactId>api-uploader</artifactId>
     <packaging>jar</packaging>
 
-    <name>api-nasabah</name>
+    <name>api-uploader</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <minio.version>8.5.6</minio.version>

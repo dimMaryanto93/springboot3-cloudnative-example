@@ -19,7 +19,7 @@ POST {{host}}:{{port}}{{context-path}}/api/v1/minio/preview
 Content-Type: application/json
 
 {
-  "objectId": "images/profile/b9b03505-6dbc-4580-aa26-e2e6912c948a.jpg",
+  "objectId": "images/profile/8dc0f240-d1d1-450a-a5f3-c1d813b87f58.jpg",
   "duration": 1,
   "unit": "HOURS"
 }
