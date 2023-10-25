@@ -3,7 +3,9 @@ package com.maryanto.dimas.example.config;
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class S3Config {
 
     private final String endpointUrl;
@@ -43,8 +45,10 @@ public class S3Config {
     public MinioClient client() {
         MinioClient.Builder builder = MinioClient.builder()
                 .endpoint(endpointUrl, endpointPort, endpointSecure)
-                .credentials(accessKey, secretKey)
-                .region(this.regionName);
+                .credentials(accessKey, secretKey);
+        if (regionEnabled) {
+            builder.region(regionName);
+        }
 
         return builder.build();
     }

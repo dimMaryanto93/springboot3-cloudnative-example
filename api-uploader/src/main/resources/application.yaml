@@ -48,3 +48,17 @@ storage:
     location:
       upload: ${STORAGE_UPLOAD_FILE_LOCATION:./target/uploads}
       download: ${STORAGE_DOWNLOAD_FILE_LOCATION:./target/download}
+
+minio:
+  endpoint:
+    url: ${MINIO_URL:localhost}
+    port: ${MINIO_PORT:9000}
+    secure: false
+  region:
+    name:
+    enabled: false
+  credential:
+    access_key: ${MINIO_ACCESS_KEY:test}
+    secret_key: ${MINIO_SECRET_KEY:test_secret_key}
+  bucket:
+    name: ${MINIO_BUCKET_NAME:local}
