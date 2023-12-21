@@ -1,5 +1,6 @@
 ### Post request to create new nasabah
-POST {{host}}:{{port}}{{context-path}}/api/nasabah/register
+POST 10.12.11.12/api/nasabah/register
+Host: api-nasabah.wahidin.go.id
 Content-Type: application/json
 
 {
