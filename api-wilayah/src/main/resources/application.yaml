@@ -12,7 +12,7 @@ eureka:
 
 spring:
   application:
-    name: api-wilayah
+    name: wilayah-api
 
 management:
   tracing:

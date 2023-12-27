@@ -11,7 +11,7 @@ eureka:
 
 spring:
   application:
-    name: api-uploader
+    name: uploader-api
   mvc:
     dispatch-options-request: true
     dispatch-trace-request: false

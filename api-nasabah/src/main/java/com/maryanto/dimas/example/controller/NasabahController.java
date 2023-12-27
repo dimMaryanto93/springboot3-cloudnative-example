@@ -4,7 +4,7 @@ import com.maryanto.dimas.example.dto.NasabahDto;
 import com.maryanto.dimas.example.model.Kota;
 import com.maryanto.dimas.example.model.MessageError;
 import com.maryanto.dimas.example.model.Nasabah;
-import com.maryanto.dimas.example.service.KotaService;
+import com.maryanto.dimas.example.service.WilayahService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,16 +16,18 @@ import java.util.Optional;
 @RequestMapping("/api/nasabah")
 public class NasabahController {
 
-    private KotaService serviceKota;
+    private WilayahService serviceKota;
 
     @Autowired
-    public NasabahController(KotaService serviceKota) {
+    public NasabahController(WilayahService serviceKota) {
         this.serviceKota = serviceKota;
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerNasabah(@RequestBody @Validated NasabahDto.RegisterNasabah dto) {
-        Optional<Kota> kotaOptional = this.serviceKota.findKotaById(dto.getIdKota());
+        ResponseEntity<Kota> kotaResponse = this.serviceKota.findByKotaId(dto.getIdKota());
+        Optional<Kota> kotaOptional = Optional.ofNullable(kotaResponse.getBody());
+
         if (kotaOptional.isEmpty()) return ResponseEntity.badRequest().body(MessageError.builder()
                 .statusCode(11)
                 .message("ID Kota is invalid!")

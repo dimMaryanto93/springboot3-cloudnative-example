@@ -11,7 +11,13 @@ eureka:
 
 spring:
   application:
-    name: api-nasabah
+    name: nasabah-api
+  cloud:
+    kubernetes:
+      loadbalancer:
+        enabled: ${OPENFEIGN_KUBERNETES_ENABLED:false}
+        mode: service
+
 
 server:
   port: ${APPLICATION_PORT:9092}
