@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: api-nasabah
-          image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-nasabah-v1
+          image: dimmaryanto93/example.spring-cloudnative:api-nasabah.v3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

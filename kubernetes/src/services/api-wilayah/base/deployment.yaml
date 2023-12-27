@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: api-wilayah
-          image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-wilayah-v1
+          image: dimmaryanto93/example.spring-cloudnative:api-wilayah.v3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
