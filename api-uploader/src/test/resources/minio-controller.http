@@ -1,4 +1,4 @@
-POST {{host}}:{{port}}{{context-path}}/api/v1/minio/upload
+POST {{host}}:{{port-uploader}}{{context-path}}/api/v1/minio/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
@@ -15,7 +15,7 @@ images/profile
 
 ### upload file
 
-POST {{host}}:{{port}}{{context-path}}/api/v1/minio/preview
+POST {{host}}:{{port-uploader}}{{context-path}}/api/v1/minio/preview
 Content-Type: application/json
 
 {
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ### presigned url from object id
 
-POST {{host}}:{{port}}{{context-path}}/api/v1/minio/download
+POST {{host}}:{{port-uploader}}{{context-path}}/api/v1/minio/download
 Content-Type: application/json
 
 {

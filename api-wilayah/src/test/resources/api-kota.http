@@ -1,9 +1,9 @@
 ### GET list kota
-GET 10.12.11.12/api/kota/list
+GET {{host}}:{{port-wilayah}}{{context-path}}/api/kota/list
 Host: api-wilayah.wahidin.go.id
 Content-Type: application/json
 
 ### Get find by id
-GET 10.12.11.12/api/kota/findById/02
+GET {{host}}:{{port-wilayah}}{{context-path}}/api/kota/findById/02
 Host: api-wilayah.wahidin.go.id
 Content-Type: application/json

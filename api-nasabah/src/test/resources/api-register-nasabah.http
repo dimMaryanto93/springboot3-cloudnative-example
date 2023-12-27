@@ -1,5 +1,5 @@
 ### Post request to create new nasabah
-POST 10.12.11.12/api/nasabah/register
+POST {{host}}:{{port-nasabah}}{{context-path}}/api/nasabah/register
 Host: api-nasabah.wahidin.go.id
 Content-Type: application/json
 
@@ -7,5 +7,5 @@ Content-Type: application/json
   "nik": "62xxxxx",
   "namaLengkap": "Dimas Maryanto",
   "alamat": "Jl. Bukit Indah no B8 kab.Bandung",
-  "idKota": "01"
+  "idKota": "02"
 }
