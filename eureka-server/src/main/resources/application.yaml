@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: eureka-naming-server
+  cloud:
+    kubernetes:
+      loadbalancer:
+        enabled: ${OPENFEIGN_KUBERNETES_ENABLED:false}
+        mode: service
+      discovery:
+        enabled: ${DISCOVERY_SERVER_ENABLED:false}
+        discovery-server-url: ${DISCOVERY_SERVER_URL:localhost}
 
 eureka:
   client:

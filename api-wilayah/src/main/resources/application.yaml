@@ -12,7 +12,15 @@ eureka:
 
 spring:
   application:
-    name: wilayah-api
+    name: api-wilayah
+  cloud:
+    kubernetes:
+      loadbalancer:
+        enabled: ${OPENFEIGN_KUBERNETES_ENABLED:false}
+        mode: service
+      discovery:
+        enabled: ${DISCOVERY_SERVER_ENABLED:false}
+        discovery-server-url: ${DISCOVERY_SERVER_URL:localhost}
 
 management:
   tracing:

@@ -5,3 +5,5 @@ metadata:
 data:
   APPLICATION_PORT: "8080"
   OPENFEIGN_KUBERNETES_ENABLED: "true"
+  DISCOVERY_SERVER_ENABLED: "true"
+  DISCOVERY_SERVER_URL: "http://spring-cloud-kubernetes-discoveryserver"

@@ -11,19 +11,18 @@ eureka:
 
 spring:
   application:
-    name: nasabah-api
+    name: api-nasabah
   cloud:
     kubernetes:
       loadbalancer:
         enabled: ${OPENFEIGN_KUBERNETES_ENABLED:false}
         mode: service
+      discovery:
+        enabled: ${DISCOVERY_SERVER_ENABLED:false}
+        discovery-server-url: ${DISCOVERY_SERVER_URL:localhost}
 
 server:
   port: ${APPLICATION_PORT:9092}
-
-clients:
-  wilayah-service:
-    url: http://${SERVICE_WILAYAH_HOST:localhost}:${SERVICE_WILAYAH_PORT:9091}
 
 management:
   tracing:
