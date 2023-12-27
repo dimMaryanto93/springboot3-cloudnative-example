@@ -1,5 +1,5 @@
 ARG JDK_VERSION=17-alpine
-FROM eclipse-temurin:${JDK_VERSION}
+FROM --platform=linux/amd64 eclipse-temurin:${JDK_VERSION}
 
 LABEL maintener="Dimas Maryanto <software.dimas_m@icloud.com>"
 

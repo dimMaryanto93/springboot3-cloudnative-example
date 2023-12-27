@@ -41,11 +41,6 @@ spec:
                 name: eureka-property
             - configMapRef:
                 name: opentelementry-property
-          env:
-            - name: SERVICE_WILAYAH_HOST
-              value: "api-wilayah"
-            - name: SERVICE_WILAYAH_PORT
-              value: "8080"
           resources:
             requests:
               cpu: 200m

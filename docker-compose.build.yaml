@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   eureka-server:
-    image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:eureka-v1
+    image: dimmaryanto93/example.spring-cloudnative:eureka.v3
     build:
       dockerfile: Dockerfile
       context: ./eureka-server
@@ -10,7 +10,7 @@ services:
     ports:
       - "8761:8761"
   api-wilayah:
-    image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-wilayah-v1
+    image: dimmaryanto93/example.spring-cloudnative:api-wilayah.v3
     build:
       dockerfile: Dockerfile
       context: ./api-wilayah
@@ -21,7 +21,7 @@ services:
     env_file:
       - springboot.env
   api-nasabah:
-    image: dimmaryanto93/com.maryanto.dimas.spring-cloudnative:api-nasabah-v1
+    image: dimmaryanto93/example.spring-cloudnative:api-nasabah.v3
     build:
       dockerfile: Dockerfile
       context: ./api-nasabah

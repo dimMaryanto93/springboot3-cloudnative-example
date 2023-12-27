@@ -4,3 +4,4 @@ metadata:
   name: springboot-property
 data:
   APPLICATION_PORT: "8080"
+  OPENFEIGN_KUBERNETES_ENABLED: "true"
