@@ -1,6 +1,6 @@
 eureka:
   instance:
-    hostname: ${HOSTNAME:localhost}
+    hostname: wilayah-api-${HOSTNAME:localhost}
 
   client:
     serviceUrl:
@@ -53,7 +53,6 @@ management:
     web:
       exposure:
         include: "resume,pause,restart,refresh,metrics,threaddump,heapdump,info,health,health-path"
-
 
 server:
   port: ${APPLICATION_PORT:9091}
